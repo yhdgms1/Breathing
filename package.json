@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.16.0",
+    "bun-types": "^0.1.0"
+  },
+  "dependencies": {
+    "zod": "^3.19.1"
+  }
+}
