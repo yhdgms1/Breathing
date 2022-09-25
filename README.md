@@ -3,7 +3,7 @@
 ## Использование
 
 ```ts
-import { breathing } from "breathing";
+import { breathing, type GetRoutesValue } from "breathing";
 import { createHandler } from "breathing/server";
 import { z } from "zod";
 
@@ -21,6 +21,24 @@ const api = breathing().request("hello", z.string().min(2), async ({ ctx, input 
 const handler = createHandler(api.store);
 
 export const onRequestPost = handler;
+export type Api = GetRoutesValue<typeof api>;
 ```
 
-todo: дописать
+```ts
+import { type FetchData } from "breathing/client";
+import { type Api } from "..";
+
+/**
+ * Опишите функцию для запросов
+ */
+const request: FetchData<Api> = async (path, options) => {
+  const req = await fetch("<URL>", {
+    method: "POST",
+    body: JSON.stringify({ path, data: options }),
+  });
+
+  const response = await request.json();
+
+  return response["data"];
+};
+```
