@@ -18,14 +18,14 @@ const createHandler = (router: Breathing<AnyEventContext>["store"]) => {
     const { request } = ctx;
 
     if (request.method !== "POST") {
-      respond(400, { error: "Unsupported method" });
+      return respond(400, { error: "Unsupported method" });
     }
 
     const body = await request.text();
     const payload = body === "" ? undefined : JSON.parse(body);
 
     if (payload === undefined) {
-      respond(400, { error: "Empty payload" });
+      return respond(400, { error: "Empty payload" });
     }
 
     const path = payload["path"] as string;
