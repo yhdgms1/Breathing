@@ -1,6 +1,6 @@
 {
   "name": "breathing",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "module": "src/index.ts",
   "type": "module",
   "exports": {
@@ -12,6 +12,18 @@
     },
     "./client": {
       "import": "./src/client.ts"
+    },
+    "./index": {
+      "import": "./src/index.ts"
+    },
+    "./src/server.ts": {
+      "import": "./src/server.ts"
+    },
+    "./src/client.ts": {
+      "import": "./src/client.ts"
+    },
+    "./src/index.ts": {
+      "import": "./src/index.ts"
     },
     "./*": "./*"
   },
