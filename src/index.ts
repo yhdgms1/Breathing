@@ -16,7 +16,7 @@ interface StoreObject<T extends ZodTypeAny, K extends unknown> {
 
 type DefaultStoreValue = Record<string, StoreObject<ZodTypeAny, unknown>>;
 
-type Breathing<Context extends AnyEventContext, Store = DefaultStoreValue> = {
+type Breathing<Context extends AnyEventContext, Store extends DefaultStoreValue = {}> = {
   request<Url extends string, Input extends ZodTypeAny, Output>(
     url: Url,
     input: Input,
@@ -27,7 +27,7 @@ type Breathing<Context extends AnyEventContext, Store = DefaultStoreValue> = {
 
 type GetRoutesValue<T> = T extends Breathing<AnyEventContext, infer Store> ? Store : never;
 
-const breathing = <Context extends AnyEventContext, Store = DefaultStoreValue>(): Breathing<Context, Store> => {
+const breathing = <Context extends AnyEventContext, Store extends DefaultStoreValue = {}>(): Breathing<Context, Store> => {
   type InternalStore = Record<string, { input: ZodTypeAny; resolve: Parameters<Breathing<Context>["request"]>[2] }>;
 
   const store = {} as InternalStore;
