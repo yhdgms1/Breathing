@@ -3,8 +3,8 @@
 ## Использование
 
 ```ts
-import { breathing, type GetRoutesValue } from "breathing";
-import { createHandler } from "breathing/server";
+import { breathing, type GetRoutesValue } from "breathing/dist/index";
+import { createHandler } from "breathing/dist/server";
 import { z } from "zod";
 
 /**
@@ -25,7 +25,7 @@ export type Api = GetRoutesValue<typeof api>;
 ```
 
 ```ts
-import { type FetchData } from "breathing/client";
+import { type FetchData } from "breathing/dist/client";
 import { type Api } from "..";
 
 /**
