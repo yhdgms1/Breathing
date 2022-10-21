@@ -10,7 +10,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "declaration": true,
-    "types": ["bun-types"],
     "outDir": "dist"
-  }
+  },
+  "exclude": ["test"],
+  "include": ["src"]
 }

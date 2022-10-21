@@ -1,8 +1,8 @@
-import type { GetRoutesValue, Breathing, AnyEventContext } from ".";
+import type { GetRoutesValue, Breathing, AnyEventContext, StoreObject } from ".";
+import type { ZodTypeAny } from "zod";
 
 type BasicRoutes = GetRoutesValue<Breathing<AnyEventContext>>;
-
-// @ts-expect-error: *write it later*
-type FetchData<Routes extends BasicRoutes> = <Route extends keyof Routes>(path: Route, options?: Routes[Route]["input"]) => Promise<Routes[Route]["output"]>;
+// prettier-ignore
+type FetchData<Routes extends Record<string, StoreObject<ZodTypeAny, unknown>>> = <Route extends keyof Routes>(path: Route, options?: Routes[Route]["input"]) => Promise<Routes[Route]["output"]>;
 
 export type { BasicRoutes, FetchData };
